@@ -9,7 +9,7 @@ class ShopProductScreen extends StatelessWidget {
   const ShopProductScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopStates>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -58,7 +58,7 @@ class ShopProductScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 mainAxisSpacing: 10.0,
                 crossAxisSpacing: 10.0,
-                childAspectRatio: 1 / 1.58,
+                childAspectRatio: 1 / 1.8,
                 children: List.generate(
                   model!.data!.products.length,
                   (index) => buildGridProduct(model.data!.products[index]),
@@ -120,7 +120,8 @@ class ShopProductScreen extends StatelessWidget {
                         style: const TextStyle(
                             fontSize: 12.0,
                             height: 1.3,
-                            color: Colors.deepOrange),
+                            color: Colors.deepOrange
+                        ),
                       ),
                       const SizedBox(
                         width: 5.0,

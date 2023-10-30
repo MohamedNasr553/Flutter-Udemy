@@ -13,3 +13,10 @@ class ShopHomeLoadingState extends ShopStates{}
 class ShopHomeSuccessState extends ShopStates{}
 
 class ShopHomeErrorState extends ShopStates{}
+
+class ShopProfileLoadingState extends ShopStates{}
+
+class ShopProfileSuccessState extends ShopStates{}
+
+class ShopProfileErrorState extends ShopStates{}
+

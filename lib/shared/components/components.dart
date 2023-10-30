@@ -271,7 +271,7 @@ Color chooseToastColor(ToastStates state){
       color = Colors.yellow;
       break;
     case ToastStates.ERROR:
-      color = Colors.amber;
+      color = Colors.red;
       break;
   }
   return color;

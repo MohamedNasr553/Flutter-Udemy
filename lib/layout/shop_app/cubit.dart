@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/layout/shop_app/ShopLayout.dart';
 import 'package:flutter_app/layout/shop_app/states.dart';
 import 'package:flutter_app/models/shop_app/shop_layout_model.dart';
+import 'package:flutter_app/models/shop_app/shop_login_model.dart';
+import 'package:flutter_app/models/shop_app/shop_register_model.dart';
 import 'package:flutter_app/modules/shop_app/category/category.dart';
 import 'package:flutter_app/modules/shop_app/favorites/favorites.dart';
 import 'package:flutter_app/modules/shop_app/products/products.dart';
@@ -19,7 +21,7 @@ class ShopCubit extends Cubit<ShopStates>{
     const ShopProductScreen(),
     const ShopCategoryScreen(),
     const ShopFavoriteScreen(),
-    const ShopSettingScreen(),
+    ShopSettingScreen(),
   ];
 
   int currentIndex = 0;
@@ -43,8 +45,23 @@ class ShopCubit extends Cubit<ShopStates>{
 
      emit(ShopHomeSuccessState());
    }).catchError((error){
-
       emit(ShopHomeErrorState());
    });
+  }
+
+  ShopLoginModel? shopProfileModel;
+
+  void getUserProfile(){
+    emit(ShopProfileLoadingState());
+
+    DioHelper.getData(
+      url: PROFILE,
+    ).then((value){
+      shopProfileModel = ShopLoginModel.fromJson(value.data);
+
+      emit(ShopProfileSuccessState());
+    }).catchError((error){
+      emit(ShopProfileErrorState());
+    });
   }
 }
