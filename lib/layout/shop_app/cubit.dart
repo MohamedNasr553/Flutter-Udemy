@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/layout/shop_app/ShopLayout.dart';
 import 'package:flutter_app/layout/shop_app/states.dart';
+import 'package:flutter_app/models/shop_app/shop_categories_model.dart';
 import 'package:flutter_app/models/shop_app/shop_layout_model.dart';
 import 'package:flutter_app/models/shop_app/shop_login_model.dart';
 import 'package:flutter_app/models/shop_app/shop_register_model.dart';
@@ -33,7 +34,6 @@ class ShopCubit extends Cubit<ShopStates>{
   }
 
   ShopLayoutModel? shopLayoutModel;
-
   void shopHomeData(){
    emit(ShopHomeLoadingState());
 
@@ -41,7 +41,6 @@ class ShopCubit extends Cubit<ShopStates>{
      url: HOME,
    ).then((value){
      shopLayoutModel = ShopLayoutModel.fromJson(value.data);
-     print(shopLayoutModel?.data?.banners.toString());
 
      emit(ShopHomeSuccessState());
    }).catchError((error){
@@ -50,7 +49,6 @@ class ShopCubit extends Cubit<ShopStates>{
   }
 
   ShopLoginModel? shopProfileModel;
-
   void getUserProfile(){
     emit(ShopProfileLoadingState());
 
@@ -62,6 +60,22 @@ class ShopCubit extends Cubit<ShopStates>{
       emit(ShopProfileSuccessState());
     }).catchError((error){
       emit(ShopProfileErrorState());
+    });
+  }
+
+  CategoriesModel? categoriesModel;
+  void getCategories(){
+    emit(ShopCategoriesLoadingState());
+
+    DioHelper.getData(
+      url: CATEGORIES,
+    ).then((value){
+      categoriesModel = CategoriesModel.fromJson(value.data);
+
+      emit(ShopCategoriesSuccessState());
+    }).catchError((error){
+      print(error.toString());
+      emit(ShopCategoriesErrorState());
     });
   }
 }

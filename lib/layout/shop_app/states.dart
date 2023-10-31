@@ -20,3 +20,9 @@ class ShopProfileSuccessState extends ShopStates{}
 
 class ShopProfileErrorState extends ShopStates{}
 
+class ShopCategoriesLoadingState extends ShopStates{}
+
+class ShopCategoriesSuccessState extends ShopStates{}
+
+class ShopCategoriesErrorState extends ShopStates{}
+
