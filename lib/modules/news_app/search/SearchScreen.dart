@@ -31,6 +31,7 @@ class SearchScreen extends StatelessWidget {
                     if (value!.isEmpty) {
                       return 'Search must not be empty!';
                     }
+                    return null;
                   },
                   labelText: 'Search',
                   prefix: Icons.search,

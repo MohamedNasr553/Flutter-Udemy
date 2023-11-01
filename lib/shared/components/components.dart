@@ -69,7 +69,7 @@ Widget defaultTextFormField({
                 onPressed: suffixPressed,
               )
             : null,
-        // border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
     );
 
