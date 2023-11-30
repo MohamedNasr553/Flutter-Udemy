@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/layout/news_app/NewsLayout.dart';
-import 'package:flutter_app/layout/news_app/cubit/cubit.dart';
-import 'package:flutter_app/layout/news_app/cubit/states.dart';
 import 'package:flutter_app/layout/todo_app/todoLayout.dart';
 import 'package:flutter_app/shared/bloc_observer.dart';
 import 'package:flutter_app/shared/cubit/cubit.dart';
@@ -38,9 +35,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => NewsCubit()..getBusiness(),
-        ),
-        BlocProvider(
           create: (BuildContext context) => AppCubit()..changeTheme(),
         ),
       ],
@@ -53,7 +47,7 @@ class MyApp extends StatelessWidget {
             darkTheme: darkTheme,
             // themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             themeMode: ThemeMode.light,
-            home: const NewsLayout(),
+            home: HomeLayout(),
           );
         },
       ),
